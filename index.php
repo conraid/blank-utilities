@@ -7,4 +7,3 @@
  * @package Blank_Utilities
  */
 
-?>

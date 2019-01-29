@@ -2,13 +2,13 @@
 /**
  * Some utilities for WordPress
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category  Wordpress_Plugin
  * @package   Blank_Utilities
  * @author    Corrado Franco <conraid@linux.it>
  * @copyright 2016/2019 Corrado Franco
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GPL-2
+ * @license   http://www.gnu.org/licenses/old-licenses/gpl-3.0.html GPL-3
  * @link      https://github.com/conraid/blank-utilities
  */
 
@@ -19,7 +19,7 @@ Description: Some utilities for WordPress
 Version: 1.0
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
-License: GPL-2
+License: GPL-3
 Text Domain: utility
 */
 
