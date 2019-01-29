@@ -16,7 +16,7 @@
 Plugin Name: Blank_Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress
-Version: 1.0
+Version: 2.0
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -43,14 +43,17 @@ Text Domain: utility
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-        exit;
+	exit;
 }
 
-/**
- * Blank Utilities
+/*
+ * Set version number
  *
- * @since Blank_Utilitities 1.0
+ * @since Blank_Utilitities 2.0
  */
+define( 'VERSION', '2.0' );
+
+
 
 /**
  * Show link manager
@@ -80,68 +83,77 @@ if ( ! function_exists( 'blank_remove_version' ) ) {
 add_filter( 'the_generator', 'blank_remove_version' );
 
 
-/**
- * Remove version string from any enqueued scripts.
- *
- * @since Blank_Utilities 0.1
- *
- * @param string $src WordPress scripts.
- *
- * @return string src without version.
- */
-function blank_remove_version_css_js( $src ) {
-	if ( strpos( $src, 'ver=' ) ) {
-		$src = remove_query_arg( 'ver', $src );
+if ( ! function_exists( 'blank_remove_version_css_js' ) ) {
+	/**
+	 * Remove version string from any enqueued scripts.
+	 *
+	 * @since Blank_Utilities 0.1
+	 *
+	 * @param string $src WordPress scripts.
+	 *
+	 * @return string src without version.
+	 */
+	function blank_remove_version_css_js( $src ) {
+		if ( strpos( $src, 'ver=' ) ) {
+			$src = remove_query_arg( 'ver', $src );
+		}
+		return $src;
 	}
-	return $src;
 }
 add_filter( 'style_loader_src', 'blank_remove_version_css_js', 9999 );
 add_filter( 'script_loader_src', 'blank_remove_version_css_js', 9999 );
 
 
-/**
- * Check if logo_form image exist
- *
- * @since Blank_Utilities 1.0
- */
-if ( file_exists( get_stylesheet_directory() .'/images/logo_form.png' ) ) {
+if ( ! function_exists( 'blank_login_logo' ) ) {
 	/**
 	 * Show blank logo in login page
 	 *
 	 * @since Blank_Utilities 1.0
 	 */
-	function blank_login_logo() { ?>
-	<style type="text/css">
-		#login h1 a {
-			background-image: url("<?php echo get_stylesheet_directory_uri(); ?>/images/logo_form.png");
-			padding-bottom: 30px;
+	function blank_login_logo() {
+		if ( file_exists( get_stylesheet_directory() . '/images/logo_login.png' ) ) {
+			$blank_images = get_stylesheet_directory_uri() . '/images/logo_login.png';
+		} else {
+			$blank_images = plugins_url( 'images/logo_blank.png', __FILE__ );
 		}
-	</style>
-<?php }
-	add_action( 'login_enqueue_scripts', 'blank_login_logo' );
+		list( $width, $height ) = getimagesize( $blank_images );
+		wp_enqueue_style( 'blank_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', VERSION );
+		$blank_login_css = ".login h1 a {
+		background-image:url(\"$blank_images\");
+		width:{$width}px;
+		height:{$height}px;
+		}";
+		wp_add_inline_style( 'blank_login_css', $blank_login_css );
+	}
 }
+add_action( 'login_enqueue_scripts', 'blank_login_logo' );
 
-/**
- * Show
- *
- * @since Blank_Utilities 1.0
- *
- * @return home page url
- */
-function blank_login_logo_url() {
-	return home_url();
+if ( ! function_exists( 'blank_login_logo_url' ) ) {
+	/**
+	 * Show
+	 *
+	 * @since Blank_Utilities 1.0
+	 *
+	 * @return home page url
+	 */
+	function blank_login_logo_url() {
+		return home_url();
+	}
 }
 add_filter( 'login_headerurl', 'blank_login_logo_url' );
 
-/**
- * Show
- *
- * @since Blank_Utilities 1.0
- *
- * @return title home page url
- */
-function blank_login_logo_url_title() {
-	return 'pippo';
+
+if ( ! function_exists( 'blank_login_logo_url_title' ) ) {
+	/**
+	 * Show
+	 *
+	 * @since Blank_Utilities 1.0
+	 *
+	 * @return title home page url
+	 */
+	function blank_login_logo_url_title() {
+		return 'pippo';
+	}
 }
 add_filter( 'login_headertitle', 'blank_login_logo_url_title' );
 
