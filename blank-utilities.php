@@ -13,10 +13,10 @@
  */
 
 /*
-Plugin Name: Blank_Utilities
+Plugin Name: Blank Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress for my personal and particolar use
-Version: 2.0
+Version: 2.1
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since Blank_Utilitities 2.0
  */
-define( 'VERSION', '2.0' );
+define( 'VERSION', '2.1' );
 
 
 

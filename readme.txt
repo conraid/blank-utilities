@@ -28,10 +28,14 @@ No configuration is necessary.
 
 == Changelog ==
 
+= 2.1 =
+
+* Fixed plugin name
+
 = 2.0 =
 
-* Add caldera phone italy option
-* Fix login logo
+* Added caldera phone italy option
+* Fixed login logo
 
 = 1.0 =
 
