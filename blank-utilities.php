@@ -46,15 +46,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
- * Set version number
- *
- * @since Blank_Utilitities 2.0
- */
-define( 'VERSION', '2.1' );
-
-
-
 /**
  * Show link manager
  *
