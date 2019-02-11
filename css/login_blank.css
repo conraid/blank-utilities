@@ -1,0 +1,6 @@
+.login h1 a {
+margin-bottom: 30px;
+max-width: 250px;
+max-height: 250px;
+background-size: contain;
+}

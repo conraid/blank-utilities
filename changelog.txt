@@ -1,5 +1,10 @@
 *** Blank Utilities ***
 
-2016-04.08 version 1.0
+2019-01-29 version 2.0
+
+* Add caldera phone italy option
+* Fix login logo
+
+2016-04-08 version 1.0
 
 * Initial release

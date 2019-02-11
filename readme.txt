@@ -28,6 +28,11 @@ No configuration is necessary.
 
 == Changelog ==
 
+= 2.0 =
+
+* Add caldera phone italy option
+* Fix login logo
+
 = 1.0 =
 
 * Initial release
