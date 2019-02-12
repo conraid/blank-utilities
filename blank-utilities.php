@@ -16,7 +16,7 @@
 Plugin Name: Blank Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress for my personal and particolar use
-Version: 2.1
+Version: 2.2
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -45,6 +45,14 @@ Text Domain: utility
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+/*
+ * Set version number
+ *
+ * @since Blank_Utilitities 2.0
+ */
+define( 'BLANK_UTILITIES_VERSION', '2.2' );
+
 
 /**
  * Show link manager
@@ -108,7 +116,7 @@ if ( ! function_exists( 'blank_login_logo' ) ) {
 			$blank_images = plugins_url( 'images/logo_blank.png', __FILE__ );
 		}
 		list( $width, $height ) = getimagesize( $blank_images );
-		wp_enqueue_style( 'blank_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', VERSION );
+		wp_enqueue_style( 'blank_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', BLANK_UTILITIES_VERSION );
 		$blank_login_css = ".login h1 a {
 		background-image:url(\"$blank_images\");
 		width:{$width}px;
@@ -152,17 +160,17 @@ add_filter( 'login_headertitle', 'blank_login_logo_url_title' );
 
 if ( ! function_exists( 'caldera_phone_italy' ) ) {
 	/**
-	  * Set Italy for Caldera Forms phone fields
-	  *
-	  * @since Blank_Utilities 2.0
-	  *
-	  * @return options
-	  */
+	 * Set Italy for Caldera Forms phone fields
+	 *
+	 * @since Blank_Utilities 2.0
+	 *
+	 * @return options
+	 */
 	function caldera_phone_italy() {
 		// Use ISO_3166-1_alpha-2 formatted country code.
 		$options['preferredCountries'] = array( 'IT', 'CH' );
 		$options['initialCountry']     = 'IT';
-		//$options['onlyCountries'] = array( 'IT', 'CH' );
+		// $options['onlyCountries']    = array( 'IT', 'CH' );
 		return $options;
 	}
 }

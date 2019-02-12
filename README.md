@@ -12,6 +12,10 @@ No configuration is necessary.
 
 ## Changelog ##
 
+### 2.2 ###
+
+* Readded and renamed version constant. I'm sorry
+
 ### 2.1 ###
 
 * Fixed plugin name
