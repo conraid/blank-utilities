@@ -16,7 +16,7 @@
 Plugin Name: Blank Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress for my personal and particolar use
-Version: 2.2
+Version: 2.3
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since Blank_Utilitities 2.0
  */
-define( 'BLANK_UTILITIES_VERSION', '2.2' );
+define( 'BLANK_UTILITIES_VERSION', '2.3' );
 
 
 /**
@@ -117,8 +117,9 @@ if ( ! function_exists( 'blank_login_logo' ) ) {
 		}
 		list( $width, $height ) = getimagesize( $blank_images );
 		wp_enqueue_style( 'blank_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', BLANK_UTILITIES_VERSION );
-		$blank_login_css = ".login h1 a {
+		$blank_login_css = "#login h1 a, .login h1 a {
 		background-image:url(\"$blank_images\");
+		background-repeat: no-repeat;
 		width:{$width}px;
 		height:{$height}px;
 		}";
@@ -126,6 +127,7 @@ if ( ! function_exists( 'blank_login_logo' ) ) {
 	}
 }
 add_action( 'login_enqueue_scripts', 'blank_login_logo' );
+
 
 if ( ! function_exists( 'blank_login_logo_url' ) ) {
 	/**

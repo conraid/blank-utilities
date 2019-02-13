@@ -12,6 +12,10 @@ No configuration is necessary.
 
 ## Changelog ##
 
+### 2.3 ###
+
+* Added id login to logo css
+
 ### 2.2 ###
 
 * Readded and renamed version constant. I'm sorry
