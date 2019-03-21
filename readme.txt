@@ -4,7 +4,7 @@ Donate link: http://conraid.net
 Tags: utility,utilities
 Requires at least: 4.4
 Tested up to: 5.1
-Stable tag: 2.2
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,20 @@ This section describes how to install the plugin and get it working.
 No configuration is necessary.
 
 == Changelog ==
+
+= 2.5 =
+
+* Added SVG mime types
+* Removed confirmation email to Contact Form 7
+* Removed caldera phone italy option
+
+= 2.4 =
+
+* Added confirmation email to Contact Form 7
+
+= 2.3 =
+
+* Added id login to logo css
 
 = 2.2 =
 

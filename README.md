@@ -12,6 +12,16 @@ No configuration is necessary.
 
 ## Changelog ##
 
+### 2.5 ###
+
+* Added SVG mime types
+* Removed confirmation email to Contact Form 7
+* Removed caldera phone italy option
+
+### 2.4 ###
+
+* Added confirmation email to Contact Form 7
+
 ### 2.3 ###
 
 * Added id login to logo css

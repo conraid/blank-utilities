@@ -16,7 +16,7 @@
 Plugin Name: Blank Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress for my personal and particolar use
-Version: 2.3
+Version: 2.5
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -53,14 +53,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 define( 'BLANK_UTILITIES_VERSION', '2.3' );
 
-
 /**
  * Show link manager
  *
  * @since Blank_Utilities 1.0
  */
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-
 
 /**
  * Remove version number.
@@ -69,20 +67,19 @@ add_filter( 'pre_option_link_manager_enabled', '__return_true' );
  */
 remove_action( 'wp_head', 'wp_generator' );
 
-if ( ! function_exists( 'blank_remove_version' ) ) {
+if ( ! function_exists( 'blankuti_remove_wpversion' ) ) {
 	/**
 	 * Remove versione string from WordPress tag.
 	 *
 	 * @since Blank_Utilities 1.0
 	 */
-	function blank_remove_version() {
+	function blankuti_remove_wpversion() {
 		return '';
 	}
 }
-add_filter( 'the_generator', 'blank_remove_version' );
+add_filter( 'the_generator', 'blankuti_remove_wpversion' );
 
-
-if ( ! function_exists( 'blank_remove_version_css_js' ) ) {
+if ( ! function_exists( 'blankuti_remove_version_css_js' ) ) {
 	/**
 	 * Remove version string from any enqueued scripts.
 	 *
@@ -92,89 +89,96 @@ if ( ! function_exists( 'blank_remove_version_css_js' ) ) {
 	 *
 	 * @return string src without version.
 	 */
-	function blank_remove_version_css_js( $src ) {
+	function blankuti_remove_version_css_js( $src ) {
 		if ( strpos( $src, 'ver=' ) ) {
 			$src = remove_query_arg( 'ver', $src );
 		}
 		return $src;
 	}
 }
-add_filter( 'style_loader_src', 'blank_remove_version_css_js', 9999 );
-add_filter( 'script_loader_src', 'blank_remove_version_css_js', 9999 );
+add_filter( 'style_loader_src', 'blankuti_remove_version_css_js', 9999 );
+add_filter( 'script_loader_src', 'blankuti_remove_version_css_js', 9999 );
 
-
-if ( ! function_exists( 'blank_login_logo' ) ) {
+if ( ! function_exists( 'blankuti_login_logo' ) ) {
 	/**
 	 * Show blank logo in login page
 	 *
 	 * @since Blank_Utilities 1.0
 	 */
-	function blank_login_logo() {
+	function blankuti_login_logo() {
 		if ( file_exists( get_stylesheet_directory() . '/images/logo_login.png' ) ) {
-			$blank_images = get_stylesheet_directory_uri() . '/images/logo_login.png';
+			$blankuti_images = get_stylesheet_directory_uri() . '/images/logo_login.png';
 		} else {
-			$blank_images = plugins_url( 'images/logo_blank.png', __FILE__ );
+			$blankuti_images = plugins_url( 'images/logo_blank.png', __FILE__ );
 		}
-		list( $width, $height ) = getimagesize( $blank_images );
-		wp_enqueue_style( 'blank_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', BLANK_UTILITIES_VERSION );
-		$blank_login_css = "#login h1 a, .login h1 a {
-		background-image:url(\"$blank_images\");
+		list( $width, $height ) = getimagesize( $blankuti_images );
+		wp_enqueue_style( 'blankuti_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', BLANK_UTILITIES_VERSION );
+		$blankuti_login_css = "#login h1 a, .login h1 a {
+		background-image:url(\"$blankuti_images\");
 		background-repeat: no-repeat;
 		width:{$width}px;
 		height:{$height}px;
 		}";
-		wp_add_inline_style( 'blank_login_css', $blank_login_css );
+		wp_add_inline_style( 'blankuti_login_css', $blankuti_login_css );
 	}
 }
-add_action( 'login_enqueue_scripts', 'blank_login_logo' );
+add_action( 'login_enqueue_scripts', 'blankuti_login_logo' );
 
-
-if ( ! function_exists( 'blank_login_logo_url' ) ) {
+if ( ! function_exists( 'blankuti_login_logo_url' ) ) {
 	/**
 	 * Show home page url
 	 *
 	 * @since Blank_Utilities 1.0
 	 *
-	 * @return home page url
+	 * @return string Home Page URL
 	 */
-	function blank_login_logo_url() {
+	function blankuti_login_logo_url() {
 		return home_url();
 	}
 }
-add_filter( 'login_headerurl', 'blank_login_logo_url' );
+add_filter( 'login_headerurl', 'blankuti_login_logo_url' );
 
-
-if ( ! function_exists( 'blank_login_logo_url_title' ) ) {
+if ( ! function_exists( 'blankuti_login_logo_url_title' ) ) {
 	/**
 	 * Show title blank
 	 *
 	 * @since Blank_Utilities 1.0
 	 *
-	 * @return title home page url
+	 * @return null title home page url
 	 */
-	function blank_login_logo_url_title() {
+	function blankuti_login_logo_url_title() {
 		return '';
 	}
 }
-add_filter( 'login_headertitle', 'blank_login_logo_url_title' );
+add_filter( 'login_headertitle', 'blankuti_login_logo_url_title' );
 
-
-
-if ( ! function_exists( 'caldera_phone_italy' ) ) {
+if ( ! function_exists( 'blankuti_no_login_errors' ) ) {
 	/**
-	 * Set Italy for Caldera Forms phone fields
+	 * Not show errors
 	 *
-	 * @since Blank_Utilities 2.0
+	 * @since Blank_Utilities 2.3
 	 *
-	 * @return options
+	 * @return string Clean message.
 	 */
-	function caldera_phone_italy() {
-		// Use ISO_3166-1_alpha-2 formatted country code.
-		$options['preferredCountries'] = array( 'IT', 'CH' );
-		$options['initialCountry']     = 'IT';
-		// $options['onlyCountries']    = array( 'IT', 'CH' );
-		return $options;
+	function blankuti_no_login_errors() {
+		return __( 'An error occurred. Please try again.' );
 	}
 }
-add_filter( 'caldera_forms_phone_js_options', 'caldera_phone_italy' );
+add_filter( 'login_errors', 'blankuti_no_login_errors' );
 
+if ( ! function_exists( 'blankuti_svg_mime_types' ) ) {
+	/**
+	 * Allowed SVG mime types and file extensions
+	 *
+	 * @since Blank_Utilities 2.5
+	 *
+	 * @param array $mimes mime types.
+	 * @return array $mimes Mime types with svg.
+	 */
+	function blankuti_svg_mime_types( $mimes ) {
+		$mimes['svg']  = 'image/svg+xml';
+		$mimes['svgz'] = 'image/svg+xml';
+		return $mimes;
+	}
+	add_filter( 'upload_mimes', 'blankuti_svg_mime_types' );
+}
