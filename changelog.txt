@@ -1,5 +1,9 @@
 *** Blank Utilities ***
 
+2019-06-15 version 2.6
+
+* Added search form shortcode
+
 2019-03-21 version 2.5
 
 * Added SVG mime types

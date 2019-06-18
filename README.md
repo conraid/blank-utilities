@@ -12,6 +12,10 @@ No configuration is necessary.
 
 ## Changelog ##
 
+### 2.6 ###
+
+* Added search form shortcode
+
 ### 2.5 ###
 
 * Added SVG mime types

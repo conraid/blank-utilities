@@ -16,7 +16,7 @@
 Plugin Name: Blank Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress for my personal and particolar use
-Version: 2.5
+Version: 2.6
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -182,3 +182,22 @@ if ( ! function_exists( 'blankuti_svg_mime_types' ) ) {
 	}
 	add_filter( 'upload_mimes', 'blankuti_svg_mime_types' );
 }
+
+if ( ! function_exists( 'blankuti_display_search_form' ) ) {
+	/**
+	 * Display standard search form
+	 *
+	 * @since Blank_Utilities 2.6
+	 */
+	function blankuti_display_search_form() {
+		return get_search_form( false );
+	}
+}
+add_shortcode( 'display_search_form', 'blankuti_display_search_form' );
+
+/**
+ * Add shortcode to the widgets text
+ *
+ * @since Blank_Utilities 2.6
+ */
+add_filter( 'widget_text', 'do_shortcode' );

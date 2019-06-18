@@ -4,7 +4,7 @@ Donate link: http://conraid.net
 Tags: utility,utilities
 Requires at least: 4.4
 Tested up to: 5.1
-Stable tag: 2.4
+Stable tag: 2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,10 @@ This section describes how to install the plugin and get it working.
 No configuration is necessary.
 
 == Changelog ==
+
+= 2.6 =
+
+* Added search form shortcode
 
 = 2.5 =
 
