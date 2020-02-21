@@ -12,6 +12,10 @@ No configuration is necessary.
 
 ## Changelog ##
 
+### 2.7 ###
+
+* Get custom logo if exists
+
 ### 2.6 ###
 
 * Added search form shortcode

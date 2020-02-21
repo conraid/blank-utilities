@@ -1,5 +1,9 @@
 *** Blank Utilities ***
 
+2020-02-21 version 2.7
+
+* Get custom logo if exists
+
 2019-06-15 version 2.6
 
 * Added search form shortcode
