@@ -16,7 +16,7 @@
 Plugin Name: Blank Utilities
 Plugin URI: https://github.com/conraid/blank-utilities
 Description: Some utilities for WordPress for my personal and particolar use
-Version: 2.7
+Version: 2.8
 Author: Corrado Franco <conraid@linux.it>
 Author URI: http://conraid.net
 License: GPL-3
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since Blank_Utilitities 2.0
  */
-define( 'BLANK_UTILITIES_VERSION', '2.7' );
+define( 'BLANK_UTILITIES_VERSION', '2.8' );
 
 /**
  * Show link manager
@@ -106,19 +106,11 @@ if ( ! function_exists( 'blankuti_login_logo' ) ) {
 	 * @since Blank_Utilities 1.0
 	 */
 	function blankuti_login_logo() {
-		// Get custom_logo.
-		if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
-			$custom_logo_attr = array( 'class' => 'custom-logo' );
-			$custom_logo_id   = get_theme_mod( 'custom_logo' );
-			$custom_logo      = wp_get_attachment_image_src( $custom_logo_id, 'full', false, $custom_logo_attr );
-			$blankuti_images  = $custom_logo[0];
+		// Show /images/logo_login.png or blank.
+		if ( file_exists( get_stylesheet_directory() . '/images/logo_login.png' ) ) {
+			$blankuti_images = get_stylesheet_directory_uri() . '/images/logo_login.png';
 		} else {
-			// Show /images/logo_login.png or blank.
-			if ( file_exists( get_stylesheet_directory() . '/images/logo_login.png' ) ) {
-				$blankuti_images = get_stylesheet_directory_uri() . '/images/logo_login.png';
-			} else {
-				$blankuti_images = plugins_url( 'images/logo_blank.png', __FILE__ );
-			}
+			$blankuti_images = plugins_url( 'images/logo_blank.png', __FILE__ );
 		}
 		list( $width, $height ) = getimagesize( $blankuti_images );
 		wp_enqueue_style( 'blankuti_login_css', plugins_url( '/css/login_blank.css', __FILE__ ), '', BLANK_UTILITIES_VERSION );

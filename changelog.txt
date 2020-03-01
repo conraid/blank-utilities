@@ -1,5 +1,9 @@
 *** Blank Utilities ***
 
+2020-02-21 version 2.8
+
+* Removed custom logo
+
 2020-02-21 version 2.7
 
 * Get custom logo if exists
