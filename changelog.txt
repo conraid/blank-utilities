@@ -1,5 +1,9 @@
 *** Blank Utilities ***
 
+2020-05-18 version 2.8.1
+
+* Fixed login_headertext
+
 2020-02-21 version 2.8
 
 * Removed custom logo

@@ -12,6 +12,14 @@ No configuration is necessary.
 
 ## Changelog ##
 
+### 2.8.1 ###
+
+* Fixed login_headertext
+
+### 2.8 ###
+
+* Removed custom logo
+
 ### 2.7 ###
 
 * Get custom logo if exists
